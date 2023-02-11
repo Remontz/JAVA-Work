@@ -1,0 +1,73 @@
+package com.kacygilbert.yogaCourse.controllers;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.kacygilbert.yogaCourse.models.Course;
+import com.kacygilbert.yogaCourse.models.Student;
+import com.kacygilbert.yogaCourse.services.CourseService;
+import com.kacygilbert.yogaCourse.services.InstructorService;
+import com.kacygilbert.yogaCourse.services.StudentService;
+
+@Controller
+@RequestMapping("/classes")
+public class CourseController {
+	@Autowired
+	CourseService courseServ;
+	@Autowired
+	InstructorService instServ;
+	@Autowired
+	StudentService stuServ;
+	
+	@GetMapping("/{id}")
+	public String viewCourse(@PathVariable("id") Long id, Model model, HttpSession session, @ModelAttribute("student") Student student) {
+		model.addAttribute("course", courseServ.getCourseById(id));
+		Long instructorId = (Long) session.getAttribute("instructorId");
+		model.addAttribute("instructor", instServ.getOneById(instructorId));
+		model.addAttribute("allStudents", stuServ.allListings());
+		return "viewClass.jsp";
+	}
+	
+	@GetMapping("/{id}/edit")
+	public String editCourse(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("course", courseServ.getCourseById(id));
+		return "editClass.jsp";
+	}
+	@PostMapping("/{id}/update")
+	public String updateCourse(@Valid @ModelAttribute("course") Course course, BindingResult results) {
+		if(results.hasErrors()) {
+			return "editClass.jsp";
+		} else {
+			courseServ.updateCourse(course);
+			return "redirect:/classes/{id}";
+		}
+	}
+	
+	
+	
+	@GetMapping("/new")
+	public String newCourse(@ModelAttribute("course") Course course, Model model) {
+		model.addAttribute("allInstructors", instServ.getAllUsers());
+		return "newClass.jsp";
+	}
+	@PostMapping("/create")
+	public String createCourse(@Valid @ModelAttribute("course") Course course, Model model, BindingResult results) {
+		if(results.hasErrors()) { 
+			return "newClass.jsp";
+		} else {
+			courseServ.createCourse(course);
+			model.addAttribute("id", course.getId());
+			return "redirect:/dashboard";
+		}
+	}
+	
+}

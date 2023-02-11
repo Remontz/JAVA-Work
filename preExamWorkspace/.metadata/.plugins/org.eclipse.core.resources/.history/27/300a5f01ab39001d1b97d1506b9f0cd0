@@ -1,0 +1,76 @@
+package com.kacygilbert.yogaCourse.controllers;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.kacygilbert.yogaCourse.models.Instructor;
+import com.kacygilbert.yogaCourse.models.LoginInstructor;
+import com.kacygilbert.yogaCourse.services.CourseService;
+import com.kacygilbert.yogaCourse.services.InstructorService;
+
+@Controller
+public class HomeController {
+
+	@Autowired
+	private InstructorService instServ;
+	@Autowired
+	private CourseService courseServ;
+	
+	@GetMapping("/")
+	public String index(Model model) {
+		model.addAttribute("newInstructor", new Instructor());
+		model.addAttribute("loginInstructor", new LoginInstructor());
+		return "index.jsp";
+	}
+	
+    @PostMapping("/register")
+    public String register(@Valid @ModelAttribute("newInstructor") Instructor newInstructor, BindingResult results, Model model, HttpSession session) {
+    	Instructor loggedInstructor = instServ.register(newInstructor, results);
+        
+        if(results.hasErrors()) {
+            model.addAttribute("loginInstructor", new LoginInstructor());
+            return "index.jsp";
+        } else {
+        	session.setAttribute("instructorId", loggedInstructor.getId()); 	
+        }
+        return "redirect:/dashboard";
+    }
+    
+    @PostMapping("/login")
+    public String login(@Valid @ModelAttribute("loginInstructor") LoginInstructor loginInstructor, BindingResult results, Model model, HttpSession session) {
+        
+        Instructor loggedInstructor = instServ.getOneByEmail(loginInstructor, results);
+    
+        if(results.hasErrors()) {
+            model.addAttribute("newInstructor", new Instructor());
+            return "index.jsp";
+        } else {
+
+        	session.setAttribute("instructorId", loggedInstructor.getId());
+        }    
+        return "redirect:/dashboard";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.removeAttribute("instructorId");
+    	return "redirect:/";
+    }
+    
+    @GetMapping("/dashboard")
+    public String dashboard(HttpSession session, Model model) {
+    	Long id = (Long) session.getAttribute("instructorId");
+    	model.addAttribute("instructor", instServ.getOneById(id));
+    	model.addAttribute("allClasses", courseServ.allCourses());
+    	return "dashboard.jsp";
+    }    
+    
+}

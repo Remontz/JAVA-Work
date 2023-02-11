@@ -1,0 +1,7 @@
+
+public class DoublyLinked {
+	public Node head;
+	public Node tail;
+	
+	public DLL() 
+}

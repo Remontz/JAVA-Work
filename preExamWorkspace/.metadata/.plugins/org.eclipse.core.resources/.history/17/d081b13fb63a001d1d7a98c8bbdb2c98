@@ -1,0 +1,5 @@
+package com.kacygilbert.bookBroker.repositories;
+
+public interface AuthorRepository {
+
+}

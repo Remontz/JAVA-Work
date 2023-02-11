@@ -1,0 +1,5 @@
+package com.kacygilbert.blotify.controllers;
+
+public class HomeController {
+
+}

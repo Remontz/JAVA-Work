@@ -1,0 +1,41 @@
+package com.kacygilbert.bookBroker.controllers;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kacygilbert.bookBroker.models.Author;
+import com.kacygilbert.bookBroker.services.AuthorService;
+
+@Controller
+@RequestMapping("/authors")
+public class AuthorController {
+
+	@Autowired
+	AuthorService authorServ;
+	
+	@GetMapping("/add")
+	public String newAuthor(@ModelAttribute("author") Author author, Model model) {
+		//Maynt use -- create author or add author section to newBook() of BookController instead
+		return "newAuthor.jsp";
+	}
+	@PostMapping("/create")
+	public String createAuthor(@Valid @ModelAttribute("author") Author author, BindingResult result) {
+		if(result.hasErrors()) {
+			return "newAuthor.jsp"; //Because this is where author will be created.
+		} else {
+			authorServ.createAuthor(author);
+			return "redirect:/books/new";
+		}
+	}
+
+
+}
+

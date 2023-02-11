@@ -1,0 +1,15 @@
+package com.kacygilbert.bookBroker.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.kacygilbert.bookBroker.services.AuthorService;
+
+@Controller
+public class AuthorController {
+
+	@Autowired
+	AuthorService authorServ;
+	
+	
+}

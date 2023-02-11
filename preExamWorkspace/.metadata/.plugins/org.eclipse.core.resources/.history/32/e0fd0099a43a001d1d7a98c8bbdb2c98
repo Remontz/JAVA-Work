@@ -1,0 +1,5 @@
+package com.kacygilbert.bookBroker.models;
+
+public class Book {
+
+}

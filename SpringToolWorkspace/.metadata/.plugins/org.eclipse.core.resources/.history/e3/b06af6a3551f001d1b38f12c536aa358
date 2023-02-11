@@ -1,0 +1,11 @@
+
+public class LinkTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DLL d1 = new DLL();
+		
+		d1.printVAluesBackward();
+	}
+
+}

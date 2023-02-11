@@ -1,0 +1,5 @@
+package com.kacygilbert.pizzaAndToppings.repositories;
+
+public interface PizzaRepository {
+
+}

@@ -1,0 +1,12 @@
+package com.kacygilbert.dorms.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="dorms")
+public class Dorm {
+
+	@NotNull
+	private String name;
+}

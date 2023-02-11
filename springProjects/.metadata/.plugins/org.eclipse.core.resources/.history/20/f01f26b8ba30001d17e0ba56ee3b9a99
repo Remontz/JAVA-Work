@@ -1,0 +1,12 @@
+package com.kacygilbert.blotify.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.kacygilbert.blotify.models.User;
+
+@Repository
+public interface UserRepository extends CrudRepository<User, Long>{
+	
+
+}

@@ -1,0 +1,6 @@
+package com.kacygilbert.yogaCourse.controllers;
+
+@Controller
+public class CourseController {
+
+}

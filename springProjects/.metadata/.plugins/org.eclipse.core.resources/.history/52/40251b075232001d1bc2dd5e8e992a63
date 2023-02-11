@@ -1,0 +1,5 @@
+package com.kacygilbert.authentication.services;
+
+public class UserService {
+
+}

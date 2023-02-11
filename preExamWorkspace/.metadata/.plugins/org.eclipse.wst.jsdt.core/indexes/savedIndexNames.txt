@@ -1,0 +1,13 @@
+INDEX VERSION 1.4+C:\Users\gilbe\Learning2Code\CodingDojo\JAVA\preExamWorkspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2800978252.index
+303942263.index
+2776601013.index
+2497736018.index
+2834799971.index
+197969692.index
+3132181226.index
+1004892902.index
+3234639230.index
+1703200677.index
+4215915211.index
+1294093560.index

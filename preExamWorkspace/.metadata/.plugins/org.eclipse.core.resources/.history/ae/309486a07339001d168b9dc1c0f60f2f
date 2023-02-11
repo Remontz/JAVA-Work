@@ -1,0 +1,5 @@
+package com.kacygilbert.yogaCourse.repositories;
+
+public interface InstructorRepository {
+
+}

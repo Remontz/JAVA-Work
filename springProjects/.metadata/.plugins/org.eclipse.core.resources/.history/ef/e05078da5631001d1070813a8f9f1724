@@ -1,0 +1,7 @@
+package com.kacygilbert.dorms.models;
+
+@Entity
+@Table(name="students")
+public class Student {
+
+}

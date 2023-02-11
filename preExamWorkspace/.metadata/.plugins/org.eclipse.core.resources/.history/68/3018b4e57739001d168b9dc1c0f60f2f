@@ -1,0 +1,13 @@
+package com.kacygilbert.yogaCourse.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.kacygilbert.yogaCourse.services.InstructorService;
+
+@Controller
+public class HomeController {
+
+	@Autowired
+	private InstructorService instServ;
+}

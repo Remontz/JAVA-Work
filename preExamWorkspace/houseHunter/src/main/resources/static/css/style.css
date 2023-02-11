@@ -1,0 +1,51 @@
+
+div.container {
+    color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.register-form > * {
+    border: 1px solid black;
+    margin-bottom: 15px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+div.login-form > * {
+    border: 1px solid black;
+    margin-bottom: 15px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+div.form-input {
+    border: 1px solid black;
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
+}
+div.form-input > * {
+    border: 1px solid black;
+}
+div.form-input>.form-label {
+    padding-right: 5px;
+    width: 250px;
+}
+
+button {
+    width: 470px;
+    align-self: center;
+    justify-self: center;
+}
+h2.form-subtitle {
+    justify-self: center;
+    align-self: center;
+}

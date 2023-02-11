@@ -1,0 +1,5 @@
+package com.kacygilbert.authentication.repositories;
+
+public interface UserRepository {
+
+}

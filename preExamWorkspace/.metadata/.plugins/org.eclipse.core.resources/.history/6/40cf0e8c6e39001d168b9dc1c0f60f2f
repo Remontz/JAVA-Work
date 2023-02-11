@@ -1,0 +1,57 @@
+package com.kacygilbert.yogaCourse.models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name="courses")
+public class Course {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotNull
+	@Size(min=4, max=15, message="Class name must be between 4 and 15 characters.")
+	private String name;
+	@NotNull
+	@Size(min=3, max=4, message="Weekday cannot exceed 4 characters")
+	private String weekday;
+	@NotNull
+	@Max(value=45, message="Our prices never exceed 45 dollars for a single class")
+	private Double price;
+	
+	//__________________________________________
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="instructor_id")
+	private Instructor instructor;
+	
+	@OneToMany(mappedBy = "course", fetch=FetchType.LAZY)
+	private List<Student> students;
+	//------------------------------------------
+	
+	@Column(updatable=false)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date updatedAt;
+
+	public Course() { }
+	
+}

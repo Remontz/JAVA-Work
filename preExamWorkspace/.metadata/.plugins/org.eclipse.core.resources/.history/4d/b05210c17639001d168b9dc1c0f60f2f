@@ -1,0 +1,5 @@
+package com.kacygilbert.yogaCourse.services;
+
+public class CourseService {
+
+}

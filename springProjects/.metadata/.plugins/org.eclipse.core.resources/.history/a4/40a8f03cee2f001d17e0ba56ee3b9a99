@@ -1,0 +1,5 @@
+package com.kacygilbert.pizzaAndToppings.models;
+
+public class PizzaToppings {
+
+}

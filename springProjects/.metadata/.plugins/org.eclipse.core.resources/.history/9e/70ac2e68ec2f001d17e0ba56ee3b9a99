@@ -1,0 +1,19 @@
+package com.kacygilbert.pizzaAndToppings.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+@Controller
+public class PizzaController {
+
+	@GetMapping("/")
+	public String index() {
+		return "index.jsp";
+	}
+	
+	@GetMapping("/pizza/create")
+	public String newPizza(@ModelAttribute("pizza") Pizza pizza) {
+		
+	}
+}

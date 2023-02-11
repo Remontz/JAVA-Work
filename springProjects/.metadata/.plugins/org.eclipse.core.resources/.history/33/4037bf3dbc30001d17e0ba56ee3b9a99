@@ -1,0 +1,26 @@
+package com.kacygilbert.blotify.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+
+import com.kacygilbert.blotify.models.User;
+import com.kacygilbert.blotify.repositories.UserRepository;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepo;
+	
+	//we do not want to save passwords as raw text = hash and add validations(confirmPass)
+	// check if passwords match
+	public User register(User newUser, BindingResult results) {
+		if (newUser.getPassword().equals(newUser.getConfirmPass())) {
+			// Hash password
+			// Store in database & return newUser
+		} else {
+			results.rejectValue("confirmPass", "Matches", "Passwords do not match");
+			return null;
+		}
+	}
+}

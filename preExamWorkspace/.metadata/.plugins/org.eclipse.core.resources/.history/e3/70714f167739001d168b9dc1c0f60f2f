@@ -1,0 +1,33 @@
+package com.kacygilbert.yogaCourse.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.kacygilbert.houseHunter.models.Listing;
+
+public class StudentService {
+
+	
+	public List<Listing> allListings() {
+		return listingRepo.findAll();
+	}
+	public Listing getListById(Long id) {
+		Optional<Listing> optionalListing = listingRepo.findById(id);
+		if(optionalListing.isPresent()) {
+			return optionalListing.get();
+		} else {
+			return null;
+		}
+	}
+	
+	public Listing createListing(Listing newListing) {
+		return listingRepo.save(newListing);
+	}
+	
+	public void updateListing(Listing listing) {
+		listingRepo.save(listing);
+	}
+	public void deleteListing(Long id) {
+		listingRepo.deleteById(id);
+
+}

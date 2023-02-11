@@ -1,0 +1,20 @@
+
+public class DLL {
+	public Node head;
+	public Node tail;
+	
+	public DLL() {
+		this.head = null;
+		this.tail = null;
+	}
+	
+	public void printVAluesBackward() {
+		Node current = this.tail;
+		
+		while(current!= null) {
+			System.out.println(current.value);
+			current = current.next;
+		}
+	}
+	
+}

@@ -1,0 +1,44 @@
+package com.kacygilbert.yogaCourse.controllers;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kacygilbert.yogaCourse.models.Course;
+import com.kacygilbert.yogaCourse.models.Student;
+import com.kacygilbert.yogaCourse.services.StudentService;
+
+@Controller
+@RequestMapping("/students")
+public class StudentController {
+
+		@Autowired
+		StudentService stuServ;
+		
+		@PostMapping("/{id}/update")
+		public String updateStudent(@Valid @ModelAttribute("course") Course course, BindingResult results) {
+			if(results.hasErrors()) {
+				return "editClass.jsp";
+			} else {
+				courseServ.updateCourse(course);
+				return "redirect:/classes/{id}";
+			}
+		}
+		
+		@PostMapping("/create")
+		public String createStudent(@Valid @ModelAttribute("student") Student student, Model model, BindingResult results) {
+			if(results.hasErrors()) { 
+				return "viewClass.jsp";
+			} else {
+				stuServ.createStudent(student)
+				model.addAttribute("id", course.getId());
+				return "redirect:/dashboard";
+			}
+		}
+}

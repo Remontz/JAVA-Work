@@ -1,0 +1,13 @@
+package com.kacygilbert.dorms.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="dorms")
+public class Dorm {
+
+	@NotNull
+	private String name;
+}

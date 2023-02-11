@@ -1,0 +1,5 @@
+package com.kacygilbert.blotify.repositories;
+
+public interface UserRepository {
+
+}

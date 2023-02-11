@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;DoublyLinked.java&apos; to &apos;DLL.java&apos;&#x0D;&#x0A;- Original project: &apos;DoublyLinkedListAssignment&apos;&#x0D;&#x0A;- Original element: &apos;DoublyLinked.java&apos;&#x0D;&#x0A;- Renamed element: &apos;DLL.java&apos;" description="Rename compilation unit &apos;DoublyLinked.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{DoublyLinked.java" name="DLL.java" references="false" stamp="1660868311087" version="1.0"/>
+</session>

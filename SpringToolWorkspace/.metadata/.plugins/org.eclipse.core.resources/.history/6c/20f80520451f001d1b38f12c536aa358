@@ -1,0 +1,17 @@
+
+public class ListTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SinglyLinkedList sll = new SinglyLinkedList();
+		sll.AddBack(3);
+		sll.AddBack(4);
+		sll.AddBack(10);
+		sll.AddBack(5);
+		sll.AddBack(15);
+		sll.AddBack(2);
+		sll.remove();
+		sll.remove();
+		sll.printValues();
+	}
+}

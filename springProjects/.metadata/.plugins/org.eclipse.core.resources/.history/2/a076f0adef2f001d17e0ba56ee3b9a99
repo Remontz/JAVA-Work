@@ -1,0 +1,18 @@
+package com.kacygilbert.pizzaAndToppings.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kacygilbert.pizzaAndToppings.models.Topping;
+
+@RequestMapping("/toppings")
+@Controller
+public class ToppingController {
+	
+	@GetMapping("/topping/create")
+	public String newTopping(@ModelAttribute("topping") Topping topping) {
+		return "newTopping.jsp";
+	}
+}

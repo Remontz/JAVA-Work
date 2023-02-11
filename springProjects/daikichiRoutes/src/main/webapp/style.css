@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.blueBox {
+	background-color: blue;
+	outline: 1px solid black;
+}

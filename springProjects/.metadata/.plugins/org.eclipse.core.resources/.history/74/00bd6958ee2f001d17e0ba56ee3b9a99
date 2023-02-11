@@ -1,0 +1,7 @@
+package com.kacygilbert.pizzaAndToppings.models;
+
+@Entity
+@Table(name="pizzatoppings")
+public class PizzaToppings {
+// Exist ot combine the two tables Pizza and Toppings
+}

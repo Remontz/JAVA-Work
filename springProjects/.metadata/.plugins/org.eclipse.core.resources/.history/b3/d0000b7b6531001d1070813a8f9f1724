@@ -1,0 +1,18 @@
+package com.kacygilbert.dorms.models;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="dorms")
+public class Dorm {
+
+	@NotNull
+	private String name;
+	
+	private Date createdAt;
+	private Date updatedAt;
+}

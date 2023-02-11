@@ -1,0 +1,5 @@
+package com.kacygilbert.dorms.services;
+
+public class StudentService {
+
+}

@@ -1,0 +1,6 @@
+package com.kacygilbert.yogaCourse.models;
+
+
+public class Instructor {
+
+}

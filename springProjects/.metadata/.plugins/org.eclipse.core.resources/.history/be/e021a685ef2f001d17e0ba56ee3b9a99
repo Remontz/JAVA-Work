@@ -1,0 +1,10 @@
+package com.kacygilbert.pizzaAndToppings.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/toppings")
+@Controller
+public class ToppingController {
+
+}

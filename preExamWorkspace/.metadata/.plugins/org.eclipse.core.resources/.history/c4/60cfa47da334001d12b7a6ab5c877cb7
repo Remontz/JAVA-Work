@@ -1,0 +1,44 @@
+package com.kacygilbert.teams.controllers;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.kacygilbert.teams.models.Team;
+import com.kacygilbert.teams.services.TeamService;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	TeamService teamServ;
+
+	@GetMapping("/")
+	public String index(Model model) {
+		List<Team> allTeams = teamServ.allTeams();
+		model.addAttribute("allTeams", allTeams);
+		return "index.jsp";
+	}
+	
+	@GetMapping("/teams/new")
+	public String newTeam(@ModelAttribute("team") Team team) {
+		return "newTeam.jsp";
+	}
+	@PostMapping("/teams/create")
+	public String createTeam(@Valid @ModelAttribute("team") Team team, BindingResult result) {
+		if(result.hasErrors()) {
+			return "newTeam.jsp";
+		} else {
+			teamServ.createTeam(team);
+			return "redirect:/";
+		}
+	}
+}
